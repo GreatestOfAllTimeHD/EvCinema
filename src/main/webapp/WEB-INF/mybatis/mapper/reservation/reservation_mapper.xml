@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+						
+
+<mapper namespace="reservation_mapper">
+
+	<insert id="insert_reservation" parameterType="ReservationDto">
+		insert into t_reservation
+		values ( #{roomNumber} , #{customerNumber} )
+	</insert>
+	
+	<select id="select_reservation_list" resultType="ReservationDto">
+		select  room_number ,
+				customer_number 
+				from t_reservation
+	</select>
+	
+	<select id="select_reservation_list_by_roomNumber" resultType="ReservationDto"
+													   parameterType="ReservationDto">
+		select room_number, customer_number
+				from t_reservation
+				where room_number = #{roomNumber}
+	</select>
+
+	<select id="select_reservation_list_by_searchKeyword" resultType="ReservationDto"
+													   parameterType="String">
+		select room_number, customer_number
+				from t_reservation
+				where customer_number like '%'||#{value}||'%'
+	</select>
+	
+	<select id="select_reservation_list_by_searchKeyword_map" resultType="ReservationDto"
+													   parameterType="hashMap">
+		select room_number, customer_number
+				from t_reservation
+<!-- 				<choose> -->
+<!-- 					<when test="searchOption == 'customerNumber'"> -->
+<!-- 						where customer_number like '%'||#{searchKeyword}||'%' -->
+<!-- 					</when> -->
+						
+<!-- 					<when test="searchOption == 'roomNumber'"> -->
+<!-- 						where room_number like '%'||#{searchKeyword}||'%' -->
+<!-- 					</when> -->
+<!-- 					<otherwise> -->
+						
+<!-- 					</otherwise> -->
+<!-- 				</choose> -->
+				<if test="searchOption == 'customerNumber'">
+					where customer_number like '%'||#{searchKeyword}||'%'
+				</if>
+				<if test="searchOption == 'roomNumber'">
+					where room_number like '%'||#{searchKeyword}||'%'
+				</if>
+	</select>
+	
+	<select id="select_reservation_list_by_searchKeyword_map2" resultType="ReservationDto"
+													   parameterType="hashMap">
+		select room_number, customer_number
+				from t_reservation
+				where 1=1 				
+				<if test="searchOption == 'customerNumber'">
+					and customer_number like '%'||#{searchKeyword}||'%'
+				</if>
+				<if test="searchOption == 'roomNumber'">
+					and room_number like '%'||#{searchKeyword}||'%'
+				</if>
+				<if test="hotelDiv1 != null and hotelDiv1 != '' and hotelDiv1 == '1'">
+					and room_number like '1%'
+				</if>
+				<if test="hotelDiv2 != null and hotelDiv2 != '' and hotelDiv2 == '2'">
+					and room_number not like '1%'
+				</if>
+<!-- 			<where>  -->
+<!-- 				<if test="searchOption == 'customerNumber'"> -->
+<!-- 					and customer_number like '%'||#{searchKeyword}||'%' -->
+<!-- 				</if> -->
+<!-- 				<if test="searchOption == 'roomNumber'"> -->
+<!-- 					and room_number like '%'||#{searchKeyword}||'%' -->
+<!-- 				</if> -->
+<!-- 				<if test="hotelDiv1 != null and hotelDiv1 != '' and hotelDiv1 == '1'"> -->
+<!-- 					and room_number like '1%' -->
+<!-- 				</if> -->
+<!-- 				<if test="hotelDiv2 != null and hotelDiv2 != '' and hotelDiv2 == '2'"> -->
+<!-- 					and room_number not like '1%' -->
+<!-- 				</if> -->
+<!-- 			</where> -->
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
