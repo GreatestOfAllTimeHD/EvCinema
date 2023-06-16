@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVCinema 예약페이지</title>
 </head>
 <body>
-	<h1>reservationList</h1>
+	<h1>예약페이지</h1>
 	
 	<c:forEach var="item" items="${reservationList}">
-		<p>${item.roomNumber} , ${item.customerNumber}</p>
+		<p>${item.siteId} , ${item.id}</p>
 	</c:forEach>
 	
 </body>

@@ -39,10 +39,10 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 	
 	@Override
-	public List<ReservationDto> getReservationListByRoomNumber(ReservationDto reservationDto) {
+	public List<ReservationDto> getReservationListBySiteId(ReservationDto reservationDto) {
 		// TODO Auto-generated method stub
 		
-		List<ReservationDto> list = reservationDao.selectReservationListByRoomNumber(reservationDto);
+		List<ReservationDto> list = reservationDao.selectReservationListBySiteId(reservationDto);
 		
 		return list;
 	}

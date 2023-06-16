@@ -24,8 +24,41 @@
 	
 	<resources location="/resources/" mapping="/**"></resources>
 	
+<!-- 	<beans:bean id="loginInterceptor" class="com.evcinema.LoginInterceptor"/>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/**"/> --> <!--admin 경로로 들어온 경우에만 걸어 줄 수 있고, 옵션임 있어도 되고 없어도됨
+														interceptor를 여러게를 작성할 수 있음--> 
+<!-- 		<exclude-mapping path="login"/>로그인 할 경우
+			<exclude-mapping path="signUp"/>회원가입 경우 -->
+			<!-- <beans:ref bean="adminInterceptor" /> -->
+			<!--모든 경로, 요청을 의미함 모든 요청을 가로채면 문제가 발생할 수 있음
+			로그인 하려고 하는 상태에서는 접근을 허용하는 설정을 걸어주어야함-->
+<!-- 		</interceptor>
+		
+		<interceptor>
+				<mapping path="/**"/> --> <!--admin 경로로 들어온 경우에만 걸어 줄 수 있고, 옵션임 있어도 되고 없어도됨
+														interceptor를 여러게를 작성할 수 있음--> 
+<!-- 				<exclude-mapping path="login"/>로그인 할 경우
+				<exclude-mapping path="signUp"/>회원가입 경우
+				<exclude-mapping path="**/*.css"/>기본 resources 경로들을 허용하록 설정해 주어야함
+				<exclude-mapping path="**/*.js"/>
+				<exclude-mapping path="/image/**"/>
+				<exclude-mapping path="/main"/>
+				<beans:ref bean="loginInterceptor" />
+		</interceptor>
+	</interceptors> -->
 </beans:beans>
 
+<!-- 		<interceptor>
+			<mapping path="/**"/> admin 경로로 들어온 경우에만 걸어 줄 수 있고, 
+			<exclude-mapping path="login"/>로그인 할 경우
+			<exclude-mapping path="signUp"/>회원가입 경우
+			<exclude-mapping path="**/*.css"/>기본 resources 경로들을 허용하록 설정해 주어야함
+			<exclude-mapping path="**/*.js"/>
+			<exclude-mapping path="/image/**"/>
+			<exclude-mapping path="/main"/> -->
 
 
 

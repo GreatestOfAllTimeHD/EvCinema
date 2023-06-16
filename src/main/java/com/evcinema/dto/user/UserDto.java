@@ -8,6 +8,12 @@ public class UserDto {
 	//사용자 -> 공통부분 -> type(관리자/고객)
 	public String id;
 	public String name;
+	public String category;
+	public String phone;
+	public String uuid;
+	public String pw;
+	public String carnumber;
+	public String licensenumber;
 	public String userType;  //ADM, CUS
 
 //	public String getId() {

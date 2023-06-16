@@ -34,10 +34,10 @@ public class ReservationDaoImpl implements ReservationDao  {
 	}
 	
 	@Override
-	public List<ReservationDto> selectReservationListByRoomNumber(ReservationDto reservationDto) {
+	public List<ReservationDto> selectReservationListBySiteId(ReservationDto reservationDto) {
 		// TODO Auto-generated method stub
 		List<ReservationDto> list = 
-				sqlSessionTemplate.selectList("reservation_mapper.select_reservation_list_by_roomNumber", reservationDto);
+				sqlSessionTemplate.selectList("reservation_mapper.select_reservation_list_by_siteId", reservationDto);
 		
 		//Ctrl+H 전체에서 검색하기
 		//Ctrl+Shift+R 파일 찾기

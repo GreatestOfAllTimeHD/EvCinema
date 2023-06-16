@@ -2,6 +2,7 @@ package com.evcinema.dao.customer.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,6 +29,15 @@ public class UserDaoImpl implements UserDao{
 	public List<UserDto> selectUserList(UserDto userDto) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	SqlSession sqlSession; // 로그인 구현간 삽입 SqlSession 의존관계 주입
+	 //로그인 interface 구현체 생성
+	@Override
+	public String loginCheck(UserDto UserDto) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("user.login_check", UserDto);
 	}
 	
 }

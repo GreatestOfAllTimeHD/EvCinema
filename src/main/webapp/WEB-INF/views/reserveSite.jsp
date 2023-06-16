@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVCN 충전사이트 예약</title>
 </head>
 <body>
-	<h1>reserveRoom</h1>
+	<h1>충전사이트 예약 페이지</h1>
 	
 	<form action="" method="post">
-		호실번호 <input type='text' name="roomNumber"/>
-		고객번호 <input type='text' name="customerNumber"/>
+		충전사이트 번호 <input type='text' name="siteid"/>
+		고객아이디 <input type='text' name="id"/>
 		<button type="submit">예약하기</button>
 	</form>
 </body>

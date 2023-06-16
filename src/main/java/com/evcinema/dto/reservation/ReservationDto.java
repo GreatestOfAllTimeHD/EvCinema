@@ -7,10 +7,18 @@ import lombok.Data;
 
 @Data //getter setter tostring 합친것
 public class ReservationDto {
-	String roomNumber;
+	String siteNumber;
 	String customerNumber;
 	String bulidingNumber;
 	String addField;
+	
+	String orderIdx;
+	String ecsIdx;
+	String mSerialNumber;
+	String id;
+	String uuId;
+	String siteId;
+	String paymentId;
 	
 	/*
 	 * public ReservationDto(String roomNumber, String customerNumber) {

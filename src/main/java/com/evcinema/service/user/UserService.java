@@ -2,6 +2,8 @@ package com.evcinema.service.user;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.evcinema.dto.user.UserDto;
 
 public interface UserService {
@@ -29,6 +31,10 @@ public interface UserService {
 	
 	//public List<UserDto> getUserList(UserDto userDto);  //userDto.typeCode
 	
+	//로그인 구현을 위한 메소드와 파라미터
+	 public String loginCheck(UserDto dto, HttpSession session);
+	 
+	 public void logout(HttpSession session);
 	
 }
 

@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVCN 예약완료</title>
 </head>
 <body>
-	<h1>reserve_end</h1>
+	<h1>예약 완료</h1>
 </body>
 </html>

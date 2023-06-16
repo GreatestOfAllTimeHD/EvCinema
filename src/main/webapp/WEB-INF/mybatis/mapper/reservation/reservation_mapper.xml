@@ -6,35 +6,39 @@
 
 <mapper namespace="reservation_mapper">
 
-	<insert id="insert_reservation" parameterType="ReservationDto">
-		insert into t_reservation
-		values ( #{roomNumber} , #{customerNumber} )
+<insert id="insert_reservation" parameterType="ReservationDto">
+		insert into evcn_ecsreservation
+		(siteId, id) values ( #{siteId}, #{id} )
 	</insert>
+
+<!-- 	<insert id="insert_reservation" parameterType="ReservationDto">
+		insert into t_reservation
+		values ( #{siteNumber}, #{customerNumber} )
+	</insert> -->
 	
 	<select id="select_reservation_list" resultType="ReservationDto">
-		select  room_number ,
-				customer_number 
-				from t_reservation
+		select  siteId, id 
+				from evcn_ecsreservation
 	</select>
 	
-	<select id="select_reservation_list_by_roomNumber" resultType="ReservationDto"
+	<select id="select_reservation_list_by_siteNumber" resultType="ReservationDto"
 													   parameterType="ReservationDto">
-		select room_number, customer_number
-				from t_reservation
-				where room_number = #{roomNumber}
+		select  siteId, id 
+				from evcn_ecsreservation
+				where siteId=#{siteId}
 	</select>
 
 	<select id="select_reservation_list_by_searchKeyword" resultType="ReservationDto"
 													   parameterType="String">
-		select room_number, customer_number
-				from t_reservation
-				where customer_number like '%'||#{value}||'%'
+		select  siteId, id 
+				from evcn_ecsreservation
+				where siteId like '%'||#{value}||'%'
 	</select>
 	
 	<select id="select_reservation_list_by_searchKeyword_map" resultType="ReservationDto"
 													   parameterType="hashMap">
-		select room_number, customer_number
-				from t_reservation
+		select  siteId, id 
+				from evcn_ecsreservation
 <!-- 				<choose> -->
 <!-- 					<when test="searchOption == 'customerNumber'"> -->
 <!-- 						where customer_number like '%'||#{searchKeyword}||'%' -->
@@ -48,29 +52,29 @@
 <!-- 					</otherwise> -->
 <!-- 				</choose> -->
 				<if test="searchOption == 'customerNumber'">
-					where customer_number like '%'||#{searchKeyword}||'%'
+					where siteId like '%'||#{searchKeyword}||'%'
 				</if>
 				<if test="searchOption == 'roomNumber'">
-					where room_number like '%'||#{searchKeyword}||'%'
+					where id like '%'||#{searchKeyword}||'%'
 				</if>
 	</select>
 	
 	<select id="select_reservation_list_by_searchKeyword_map2" resultType="ReservationDto"
 													   parameterType="hashMap">
-		select room_number, customer_number
-				from t_reservation
+		select  siteId, id 
+				from evcn_ecsreservation
 				where 1=1 				
 				<if test="searchOption == 'customerNumber'">
-					and customer_number like '%'||#{searchKeyword}||'%'
+					and siteId like '%'||#{searchKeyword}||'%'
 				</if>
 				<if test="searchOption == 'roomNumber'">
-					and room_number like '%'||#{searchKeyword}||'%'
+					and id like '%'||#{searchKeyword}||'%'
 				</if>
 				<if test="hotelDiv1 != null and hotelDiv1 != '' and hotelDiv1 == '1'">
-					and room_number like '1%'
+					and siteId like '1%'
 				</if>
 				<if test="hotelDiv2 != null and hotelDiv2 != '' and hotelDiv2 == '2'">
-					and room_number not like '1%'
+					and id not like '1%'
 				</if>
 <!-- 			<where>  -->
 <!-- 				<if test="searchOption == 'customerNumber'"> -->

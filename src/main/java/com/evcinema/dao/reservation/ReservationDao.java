@@ -11,7 +11,7 @@ public interface ReservationDao {
 	
 	public List<ReservationDto> selectReservationList();
 	
-	public List<ReservationDto> selectReservationListByRoomNumber(ReservationDto reservationDto);
+	public List<ReservationDto> selectReservationListBySiteId(ReservationDto reservationDto);
 	
 	public List<ReservationDto> selectReservationListBySearchKeyword(String searchKeyword); 
 	

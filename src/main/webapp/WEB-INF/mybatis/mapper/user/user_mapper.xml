@@ -5,9 +5,20 @@
 						
 <mapper namespace="user_mapper">
 
-	<insert id="insert_user" parameterType="UserDto">
+	<!-- <insert id="insert_user" parameterType="UserDto">
 		insert into t_user
 		values ( #{id} , #{name}, #{userType} )
+	</insert> -->
+	
+	<insert id="insert_user" parameterType="UserDto">
+		insert into evcn_user
+		values ( #{category}, #{name}, #{phone}, #{uuid}, #{id}, #{pw}, #{carnumber}, #{licensenumber} )
 	</insert>
 
+<!--로그인-->
+	 <select id="login_check" resultType="String">
+	  select name
+	  from evcn_user
+	  where id=#{id} and pw=#{pw}
+	 </select>
 </mapper>

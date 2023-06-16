@@ -11,7 +11,7 @@ public interface ReservationService {
 	
 	public List<ReservationDto> getReservationList();
 	
-	public List<ReservationDto> getReservationListByRoomNumber(ReservationDto reservationDto);
+	public List<ReservationDto> getReservationListBySiteId(ReservationDto reservationDto);
 	
 	public List<ReservationDto> findReservationListBySearchKeyword(String searchKeyword);
 	

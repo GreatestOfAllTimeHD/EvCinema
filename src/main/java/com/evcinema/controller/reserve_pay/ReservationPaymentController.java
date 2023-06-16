@@ -31,13 +31,13 @@ public class ReservationPaymentController {
 	ReservationService reservationService;
 	
 	
-	@GetMapping("/reserveRoom")
-	public String reserveRoom() {
-		return "reserveRoom";
+	@GetMapping("/reserveSite")
+	public String reserveSite() {
+		return "reserveSite";
 	}
 	
-	@PostMapping("/reserveRoom")
-	public String reserveRoom_process(@ModelAttribute ReservationDto reservationDto) {
+	@PostMapping("/reserveSite")
+	public String reserveSite_process(@ModelAttribute ReservationDto reservationDto) {
 		
 		System.out.println(reservationDto);
 		int result = reservationService.createReservation(reservationDto);
@@ -48,15 +48,15 @@ public class ReservationPaymentController {
 	
 	@GetMapping("/reservationList")
 	public String reservationList(Model model
-								,@RequestParam(name="roomNumber", required = false) String roomNumber) {
+								,@RequestParam(name="siteId", required = false) String siteId) {
 		
-		if(roomNumber == null) {
+		if(siteId == null) {
 			List<ReservationDto> reservationList = reservationService.getReservationList();
 			model.addAttribute("reservationList", reservationList);
 		} else {
 			ReservationDto reservationDto = new ReservationDto();
-			reservationDto.setRoomNumber(roomNumber);
-			List<ReservationDto> reservationList = reservationService.getReservationListByRoomNumber(reservationDto);
+			reservationDto.setSiteId(siteId);
+			List<ReservationDto> reservationList = reservationService.getReservationListBySiteId(reservationDto);
 			model.addAttribute("reservationList", reservationList);
 		}
 		
